@@ -119,7 +119,7 @@ public class Filtro {
   
  
  
-  
+  //pegar o novo
     public static BufferedImage media(BufferedImage i1, int n) {
         int largura = i1.getWidth();
         int altura = i1.getHeight();
@@ -176,6 +176,7 @@ public class Filtro {
         return i2;
     }
     
+    //pegar o novo
     public static BufferedImage mediana(BufferedImage i1, int n) {
         if((n<3)||((n%2)==0)){ //se a mascara tiver lado PAR ou menor que 3 -> retorna NULL 
             System.out.println("Escolha uma mascara com lado de tamanho impar, maior ou igual 3.");
@@ -252,5 +253,4 @@ public class Filtro {
     }
     
   
-    // fim
 }    

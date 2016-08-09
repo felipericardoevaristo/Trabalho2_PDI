@@ -20,10 +20,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 
-/**
- *
- * @author Ramon
- */
 public class pdiInter extends javax.swing.JFrame {
    private static BufferedImage NULL;
   
@@ -669,6 +665,19 @@ private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:even
          
     }//GEN-LAST:event_jMenuMascaraArquivoActionPerformed
 
+    //usado para obter o valor de cada posição da mascara
+    private double valorMascara(String valor){
+        if(valor.contains("/")){
+            int posMeio = valor.indexOf("/");
+            double a,b;
+            a=Double.parseDouble(valor.substring(0, posMeio));
+            b=Double.parseDouble(valor.substring(posMeio+1, valor.length()));
+            return a/b;
+        }
+        return Double.parseDouble(valor);
+    }
+    
+    
     private void jMenuMascaraArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuMascaraArquivoMouseClicked
         double[][] mascara = new double[3][3];
         
@@ -687,17 +696,17 @@ private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:even
                             String numeros[] = linha.split(" ");
                             
                             //preenche mascara
-                            mascara[0][0]= Double.parseDouble(numeros[0]);
-                            mascara[0][1]= Double.parseDouble(numeros[1]);
-                            mascara[0][2]= Double.parseDouble(numeros[2]);
+                            mascara[0][0]= valorMascara(numeros[0]);
+                            mascara[0][1]= valorMascara(numeros[1]);
+                            mascara[0][2]= valorMascara(numeros[2]);
 
-                            mascara[1][0]= Double.parseDouble(numeros[3]);
-                            mascara[1][1]= Double.parseDouble(numeros[4]);
-                            mascara[1][2]= Double.parseDouble(numeros[5]);
+                            mascara[1][0]= valorMascara(numeros[3]);
+                            mascara[1][1]= valorMascara(numeros[4]);
+                            mascara[1][2]= valorMascara(numeros[5]);
                             
-                            mascara[2][0]= Double.parseDouble(numeros[6]);
-                            mascara[2][1]= Double.parseDouble(numeros[7]);
-                            mascara[2][2]= Double.parseDouble(numeros[8]);
+                            mascara[2][0]= valorMascara(numeros[6]);
+                            mascara[2][1]= valorMascara(numeros[7]);
+                            mascara[2][2]= valorMascara(numeros[8]);
                             
                             
                             BufferedImage imagem1=LeImagem();

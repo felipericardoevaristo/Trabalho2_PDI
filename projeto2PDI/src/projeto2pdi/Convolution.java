@@ -12,7 +12,7 @@ public class Convolution {
         
         int largura = img.getWidth();
         int altura = img.getHeight();
-        System.out.println("Domensoes: "+largura+"x"+altura);     // Debugando
+        //System.out.println("Dimensoes: "+largura+"x"+altura);     // Debugando
         BufferedImage nova  = new BufferedImage(largura, altura, 1);
         
         double somaR, somaG, somaB;

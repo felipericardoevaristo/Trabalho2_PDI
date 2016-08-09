@@ -7,10 +7,7 @@ package projeto2pdi;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
-/**
- *
- * @author Rodrigo
- */
+
 public class Pilha {
     public static BufferedImage NULL;
     

@@ -12,10 +12,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-/**
- *
- * @author Rodrigo
- */
 public class ChamaInterNova {
     private static BufferedImage NULL;
  

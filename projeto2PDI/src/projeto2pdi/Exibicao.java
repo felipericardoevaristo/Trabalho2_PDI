@@ -14,10 +14,6 @@ import javax.swing.JScrollPane;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author Rodrigo
- */
 public class Exibicao {
  
     public static void exibirImagem(BufferedImage image, BufferedImage image2) {
