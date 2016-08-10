@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-/*
+ /*
  * pdiInter.java
  *
  * Created on 30/09/2011, 13:23:12
@@ -19,11 +19,13 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-
 public class pdiInter extends javax.swing.JFrame {
-   private static BufferedImage NULL;
-  
-    /** Creates new form pdiInter */
+
+    private static BufferedImage NULL;
+
+    /**
+     * Creates new form pdiInter
+     */
     public pdiInter() {
         initComponents();
         a1.setText("a.1");
@@ -31,11 +33,7 @@ public class pdiInter extends javax.swing.JFrame {
         agucamento.setText("Aguçamento");
         Inicio();
     }
-    
-    
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -57,6 +55,7 @@ public class pdiInter extends javax.swing.JFrame {
         c3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         media = new javax.swing.JMenu();
+        jMenuMediana = new javax.swing.JMenu();
         histograma = new javax.swing.JMenu();
         expansao = new javax.swing.JMenuItem();
         equalizacao = new javax.swing.JMenuItem();
@@ -209,6 +208,14 @@ public class pdiInter extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(media);
+
+        jMenuMediana.setText("Mediana");
+        jMenuMediana.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuMedianaMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenuMediana);
 
         histograma.setText("Histograma");
 
@@ -432,64 +439,45 @@ public class pdiInter extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Inicio() {
+        jPanel2.setVisible(false);
 
-    
-private void Inicio(){
-    jPanel2.setVisible(false);
-   
-}
+    }
 
+    public BufferedImage LeImagem() {
+        File foto = jFileChooser2.getSelectedFile();
+        BufferedImage imagem1 = NULL;
 
+        try {
 
-
-
-
-
-
-    
-public BufferedImage LeImagem(){
-            File foto=jFileChooser2.getSelectedFile();
-            BufferedImage imagem1=NULL;
-            
-           try{
-               
             imagem1 = ImageIO.read(foto);
-            
+
             ImageIcon icon = new ImageIcon(imagem1);
-            
-            
+
             //icon.setImage(icon.getImage().getScaledInstance(200, 200, 10));  
-            
-           
             JLabel imageMi = new JLabel(icon);
             FlowLayout flow = new FlowLayout();
-            
-            Container novo=jFrame1.getLayeredPane();
+
+            Container novo = jFrame1.getLayeredPane();
             novo.setLayout(flow);
-            
+
             novo.setSize(1000, 700);
             novo.remove(0);
             novo.add(new JScrollPane(imageMi));
-            
-            
+
             jFrame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             jFrame1.setSize(1300, 700);
             jFrame1.setVisible(true);
-            
-            
-             
-           }
-           
-           catch(IOException e){
+
+        } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Erro! Verifique se o arquivo especificado existe e tente novamente.");
-        }
-            catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Erro! !" + e.getMessage());
             e.printStackTrace();
         }
         return imagem1;
-}
+    }
 
 
 private void jFrame1ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jFrame1ComponentResized
@@ -497,231 +485,234 @@ private void jFrame1ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-F
 }//GEN-LAST:event_jFrame1ComponentResized
 
 private void jFileChooser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser2ActionPerformed
-        
-           
-        File foto=jFileChooser2.getSelectedFile();
-       
-      try{
-            
-            BufferedImage imagem1 = ImageIO.read(foto);
-            BufferedImage imagem2=imagem1;
-            ImageIcon icon = new ImageIcon(imagem1);
-            JLabel imageMi = new JLabel(icon);
-            
-            ImageIcon icon2 = new ImageIcon(imagem2);
-            JLabel imageMi2 = new JLabel(icon2);
-            FlowLayout flow = new FlowLayout();
-            
-            Container novo=jFrame1.getLayeredPane();
-            novo.setLayout(flow);
-            novo.setSize(1000,650);
-            novo.add(new JScrollPane(imageMi));
-            novo.add(new JScrollPane(imageMi2));
-            
-            jFrame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            jFrame1.setSize(1300, 1000);
-            
-            
-            jFrame1.setVisible(true);
-            
-        }
-        catch(IOException e){
-            e.printStackTrace();
-            System.out.println("Erro! Verifique se o arquivo especificado existe e tente novamente.");
-        }
-        catch(Exception e){
-            System.out.println("Erro! !" + e.getMessage());
-            e.printStackTrace();
-        }
-   
+
+    File foto = jFileChooser2.getSelectedFile();
+
+    try {
+
+        BufferedImage imagem1 = ImageIO.read(foto);
+        BufferedImage imagem2 = imagem1;
+        ImageIcon icon = new ImageIcon(imagem1);
+        JLabel imageMi = new JLabel(icon);
+
+        ImageIcon icon2 = new ImageIcon(imagem2);
+        JLabel imageMi2 = new JLabel(icon2);
+        FlowLayout flow = new FlowLayout();
+
+        Container novo = jFrame1.getLayeredPane();
+        novo.setLayout(flow);
+        novo.setSize(1000, 650);
+        novo.add(new JScrollPane(imageMi));
+        novo.add(new JScrollPane(imageMi2));
+
+        jFrame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrame1.setSize(1300, 1000);
+
+        jFrame1.setVisible(true);
+
+    } catch (IOException e) {
+        e.printStackTrace();
+        System.out.println("Erro! Verifique se o arquivo especificado existe e tente novamente.");
+    } catch (Exception e) {
+        System.out.println("Erro! !" + e.getMessage());
+        e.printStackTrace();
+    }
+
 }//GEN-LAST:event_jFileChooser2ActionPerformed
 
 private void a1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a1ActionPerformed
-            BufferedImage imagem1=LeImagem();
-            Convolution filtro=new Convolution();
-            String c1=JOptionPane.showInputDialog("Digite o valor de c",null);
-            String d1=JOptionPane.showInputDialog("Digite o valor de d",null);
-            double c=Double.parseDouble(c1);
-            double d=Double.parseDouble(d1);
-            filtro.convAgucamento1(imagem1,c,d);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Convolution filtro = new Convolution();
+    String c1 = JOptionPane.showInputDialog("Digite o valor de c", null);
+    String d1 = JOptionPane.showInputDialog("Digite o valor de d", null);
+    double c = Double.parseDouble(c1);
+    double d = Double.parseDouble(d1);
+    filtro.convAgucamento1(imagem1, c, d);
+    imagem1 = LeImagem();
 }//GEN-LAST:event_a1ActionPerformed
 
 private void a2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a2ActionPerformed
-            BufferedImage imagem1=LeImagem();
-            Convolution filtro=new Convolution();
-            String c1=JOptionPane.showInputDialog("Digite o valor de c",null);
-            String d1=JOptionPane.showInputDialog("Digite o valor de d",null);
-            double c=Double.parseDouble(c1);
-            double d=Double.parseDouble(d1);
-            filtro.convAgucamento2(imagem1,c,d);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Convolution filtro = new Convolution();
+    String c1 = JOptionPane.showInputDialog("Digite o valor de c", null);
+    String d1 = JOptionPane.showInputDialog("Digite o valor de d", null);
+    double c = Double.parseDouble(c1);
+    double d = Double.parseDouble(d1);
+    filtro.convAgucamento2(imagem1, c, d);
+    imagem1 = LeImagem();
 
 }//GEN-LAST:event_a2ActionPerformed
 
 private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
-            BufferedImage imagem1=LeImagem();
-            Convolution filtro=new Convolution();
-            filtro.convBordas1(imagem1);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Convolution filtro = new Convolution();
+    filtro.convBordas1(imagem1);
+    imagem1 = LeImagem();
 }//GEN-LAST:event_b1ActionPerformed
 
 private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
-            BufferedImage imagem1=LeImagem();
-            Convolution filtro=new Convolution();
-            filtro.convBordas2(imagem1);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Convolution filtro = new Convolution();
+    filtro.convBordas2(imagem1);
+    imagem1 = LeImagem();
 }//GEN-LAST:event_b2ActionPerformed
 
 private void b3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3ActionPerformed
-            BufferedImage imagem1=LeImagem();
-            Convolution filtro=new Convolution();
-            filtro.convBordas3(imagem1);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Convolution filtro = new Convolution();
+    filtro.convBordas3(imagem1);
+    imagem1 = LeImagem();
 }//GEN-LAST:event_b3ActionPerformed
 
 private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
-            BufferedImage imagem1=LeImagem();
-            Convolution filtro=new Convolution();
-            filtro.convBordas4(imagem1);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Convolution filtro = new Convolution();
+    filtro.convBordas4(imagem1);
+    imagem1 = LeImagem();
 }//GEN-LAST:event_b4ActionPerformed
 
 private void c1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c1ActionPerformed
-            BufferedImage imagem1=LeImagem();
-            Convolution filtro=new Convolution();
-            filtro.convRelevo1(imagem1);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Convolution filtro = new Convolution();
+    filtro.convRelevo1(imagem1);
+    imagem1 = LeImagem();
 }//GEN-LAST:event_c1ActionPerformed
 
 private void c2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c2ActionPerformed
-            BufferedImage imagem1=LeImagem();
-            Convolution filtro=new Convolution();
-            filtro.convBordas2(imagem1);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Convolution filtro = new Convolution();
+    filtro.convBordas2(imagem1);
+    imagem1 = LeImagem();
 }//GEN-LAST:event_c2ActionPerformed
 
 private void c3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c3ActionPerformed
-            BufferedImage imagem1=LeImagem();
-            Convolution filtro=new Convolution();
-            filtro.convBordas3(imagem1);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Convolution filtro = new Convolution();
+    filtro.convBordas3(imagem1);
+    imagem1 = LeImagem();
 }//GEN-LAST:event_c3ActionPerformed
 
 private void expansaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expansaoActionPerformed
-            BufferedImage imagem1=LeImagem();
-            Filtro filtro=new Filtro();
-            filtro.expansao(imagem1);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Filtro filtro = new Filtro();
+    filtro.expansao(imagem1);
+    imagem1 = LeImagem();
 }//GEN-LAST:event_expansaoActionPerformed
 
 private void equalizacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalizacaoActionPerformed
-            BufferedImage imagem1=LeImagem();
-            Filtro filtro=new Filtro();
-            filtro.equalizacao(imagem1);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Filtro filtro = new Filtro();
+    filtro.equalizacao(imagem1);
+    imagem1 = LeImagem();
 }//GEN-LAST:event_equalizacaoActionPerformed
 
 private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-        
+
 }//GEN-LAST:event_jMenu1ActionPerformed
 
 private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        jFrame1.setVisible(false);
-        Inicio();
-        //LeImagem();
-        Container novo=jFrame1.getLayeredPane();
-        novo.remove(0);
-        novo.remove(0);
+    jFrame1.setVisible(false);
+    Inicio();
+    //LeImagem();
+    Container novo = jFrame1.getLayeredPane();
+    novo.remove(0);
+    novo.remove(0);
 }//GEN-LAST:event_jMenuItem1ActionPerformed
 
 private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        System.exit(0);
+    System.exit(0);
 }//GEN-LAST:event_jMenuItem2ActionPerformed
 
 private void mediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediaActionPerformed
-            
+
 }//GEN-LAST:event_mediaActionPerformed
 
 private void mediaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mediaMouseClicked
-            BufferedImage imagem1=LeImagem();
-            Convolution filtro=new Convolution();
-            String m1=JOptionPane.showInputDialog("Digite o valor de M",null);
-            String n1=JOptionPane.showInputDialog("Digite o valor de N",null);
-            int m=Integer.parseInt(m1);
-            int n=Integer.parseInt(n1);
-            filtro.convMedia(imagem1,m,n);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Convolution filtro = new Convolution();
+    String m1 = JOptionPane.showInputDialog("Digite o valor de M", null);
+    String n1 = JOptionPane.showInputDialog("Digite o valor de N", null);
+    int m = Integer.parseInt(m1);
+    int n = Integer.parseInt(n1);
+    filtro.convMedia(imagem1, m, n);
+    imagem1 = LeImagem();
 }//GEN-LAST:event_mediaMouseClicked
 
 private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-            BufferedImage imagem1=LeImagem();
-            Convolution filtro=new Convolution();
-            filtro.convGauss(imagem1);
-            imagem1=LeImagem();
+    BufferedImage imagem1 = LeImagem();
+    Convolution filtro = new Convolution();
+    filtro.convGauss(imagem1);
+    imagem1 = LeImagem();
 }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenuMascaraArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMascaraArquivoActionPerformed
-         
+
     }//GEN-LAST:event_jMenuMascaraArquivoActionPerformed
 
     //usado para obter o valor de cada posição da mascara
-    private double valorMascara(String valor){
-        if(valor.contains("/")){
+    private double valorMascara(String valor) {
+        if (valor.contains("/")) {
             int posMeio = valor.indexOf("/");
-            double a,b;
-            a=Double.parseDouble(valor.substring(0, posMeio));
-            b=Double.parseDouble(valor.substring(posMeio+1, valor.length()));
-            return a/b;
+            double a, b;
+            a = Double.parseDouble(valor.substring(0, posMeio));
+            b = Double.parseDouble(valor.substring(posMeio + 1, valor.length()));
+            return a / b;
         }
         return Double.parseDouble(valor);
     }
-    
-    
+
+
     private void jMenuMascaraArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuMascaraArquivoMouseClicked
         double[][] mascara = new double[3][3];
-        
+
         JFileChooser fc = new JFileChooser();
         int res = fc.showOpenDialog(null);
-                    if(res == JFileChooser.APPROVE_OPTION){
-                        try{
-                            File fileName = fc.getSelectedFile();
-                            FileReader input = new FileReader(fileName);
-                            BufferedReader bufRead = new BufferedReader(input);
-                            String linha;
-                            int conta = 0;
-                            linha = bufRead.readLine();
-                            bufRead.close();
-                            
-                            String numeros[] = linha.split(" ");
-                            
-                            //preenche mascara
-                            mascara[0][0]= valorMascara(numeros[0]);
-                            mascara[0][1]= valorMascara(numeros[1]);
-                            mascara[0][2]= valorMascara(numeros[2]);
+        if (res == JFileChooser.APPROVE_OPTION) {
+            try {
+                File fileName = fc.getSelectedFile();
+                FileReader input = new FileReader(fileName);
+                BufferedReader bufRead = new BufferedReader(input);
+                String linha;
+                int conta = 0;
+                linha = bufRead.readLine();
+                bufRead.close();
 
-                            mascara[1][0]= valorMascara(numeros[3]);
-                            mascara[1][1]= valorMascara(numeros[4]);
-                            mascara[1][2]= valorMascara(numeros[5]);
-                            
-                            mascara[2][0]= valorMascara(numeros[6]);
-                            mascara[2][1]= valorMascara(numeros[7]);
-                            mascara[2][2]= valorMascara(numeros[8]);
-                            
-                            
-                            BufferedImage imagem1=LeImagem();
-                            Convolution filtro=new Convolution();
-                            filtro.convMascara(imagem1, mascara);
-                            imagem1=LeImagem();
-                            
-                        }catch(Exception e){
-                            JOptionPane.showMessageDialog(null, "Erro ao abrir arquivo");
-                        }
-                    }
-                    else
-                        JOptionPane.showMessageDialog(null, "Voce nao selecionou nenhum arquivo.");
+                String numeros[] = linha.split(" ");
+
+                //preenche mascara
+                mascara[0][0] = valorMascara(numeros[0]);
+                mascara[0][1] = valorMascara(numeros[1]);
+                mascara[0][2] = valorMascara(numeros[2]);
+
+                mascara[1][0] = valorMascara(numeros[3]);
+                mascara[1][1] = valorMascara(numeros[4]);
+                mascara[1][2] = valorMascara(numeros[5]);
+
+                mascara[2][0] = valorMascara(numeros[6]);
+                mascara[2][1] = valorMascara(numeros[7]);
+                mascara[2][2] = valorMascara(numeros[8]);
+
+                BufferedImage imagem1 = LeImagem();
+                Convolution filtro = new Convolution();
+                filtro.convMascara(imagem1, mascara);
+                imagem1 = LeImagem();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao abrir arquivo");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Voce nao selecionou nenhum arquivo.");
+        }
     }//GEN-LAST:event_jMenuMascaraArquivoMouseClicked
 
+    private void jMenuMedianaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuMedianaMouseClicked
+        BufferedImage imagem1 = LeImagem();
+        Convolution filtro = new Convolution();
+        int m = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor de M", null));
+        int n = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor de N", null));
+        filtro.convMediana(imagem1, m, n);
+        imagem1 = LeImagem();
+    }//GEN-LAST:event_jMenuMedianaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -755,7 +746,7 @@ private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:even
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                
+
                 new pdiInter().setVisible(true);
             }
         });
@@ -794,6 +785,7 @@ private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:even
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu jMenuMascaraArquivo;
+    private javax.swing.JMenu jMenuMediana;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
@@ -808,9 +800,3 @@ private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:even
     private javax.swing.JMenu media;
     // End of variables declaration//GEN-END:variables
 }
-
-
-
-
-
-
