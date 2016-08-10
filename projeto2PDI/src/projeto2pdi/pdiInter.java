@@ -634,8 +634,13 @@ private void mediaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event
     String n1 = JOptionPane.showInputDialog("Digite o valor de N", null);
     int m = Integer.parseInt(m1);
     int n = Integer.parseInt(n1);
+    //pega o tempo inicial
+    long start = System.currentTimeMillis();
     filtro.convMedia(imagem1, m, n);
     imagem1 = LeImagem();
+    //pega o tempo final
+    long fim = System.currentTimeMillis() - start;
+    JOptionPane.showMessageDialog(null, "Gastou "+fim/1000+" segundos");
 }//GEN-LAST:event_mediaMouseClicked
 
 private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
@@ -710,8 +715,13 @@ private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:even
         Convolution filtro = new Convolution();
         int m = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor de M", null));
         int n = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor de N", null));
+        //pega o tempo inicial
+        long start = System.currentTimeMillis();
         filtro.convMediana(imagem1, m, n);
         imagem1 = LeImagem();
+        //pega o tempo final
+        long fim = System.currentTimeMillis() - start;
+        JOptionPane.showMessageDialog(null, "Gastou "+fim/1000+" segundos");
     }//GEN-LAST:event_jMenuMedianaMouseClicked
 
     /**

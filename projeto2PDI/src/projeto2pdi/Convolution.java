@@ -4,6 +4,7 @@ package projeto2pdi;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 public class Convolution {   
 
@@ -647,7 +648,6 @@ public class Convolution {
                 image.setRGB(i, j, rgb.getRGB()); //Insere a cor no pixel do meio
             }
         }
-    
     }
 
     //media
@@ -657,7 +657,6 @@ public class Convolution {
         int r, g, b, //Componentes de cor
             i2=0, j2=0; //Variáveis auxiliares, servem para varrer o pixel central e seus vizinhos
         Color rgb; //Cor a ser setada na imagem
-
         //Varre a imagem inteira
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
